@@ -1,0 +1,15 @@
+{
+  "name": "electron",
+  "version": "0.0.0",
+  "main": "main.js",
+  "scripts": {
+    "electron": "electron .",
+    "electron-build": "cd ../web && ng build --prod && npm run electron ../electron/main.js"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^9.0.3",
+    "electron-packager": "^14.2.1"
+  }
+}
