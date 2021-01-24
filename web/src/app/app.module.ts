@@ -12,6 +12,8 @@ import { SpotifyComponent } from './components/spotify/spotify.component';
 import { AppleMusicComponent } from './components/apple-music/apple-music.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { homeReducer } from './store/reducers/home.reducer';
+import { HomeEffects } from './store/effects/home.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,13 @@ import { homeReducer } from './store/reducers/home.reducer';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ home: homeReducer }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([HomeEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { MusicService } from 'src/app/app.types';
+import { getMusicServices } from 'src/app/store/actions/home.actions';
 import { AppState, selectHomeState } from 'src/app/store/selectors';
 
 @Component({
@@ -16,9 +17,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(getMusicServices());
+  }
 
-  routeService(service: MusicService) {
+  routeService(service: MusicService): void {
     console.log(`Navigate to ${service.serviceName}`);
     this.router.navigateByUrl(`/${service.serviceName}`);
   }
