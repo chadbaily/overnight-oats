@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { MusicService } from 'src/app/app.types';
-import {
-  AppState,
-  selectHomeState,
-} from 'src/app/store/selectors';
+import { AppState, selectHomeState } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +14,13 @@ export class HomeComponent implements OnInit {
     return selectHomeState(state);
   });
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {}
 
-  routeService(service: MusicService){
-    console.log('D0 a thing with ' + service.displayName);
+  routeService(service: MusicService) {
+    console.log(`Navigate to ${service.serviceName}`);
+    this.router.navigateByUrl(`/${service.serviceName}`);
   }
 
   // onSubmit(username: string, password: string) {
