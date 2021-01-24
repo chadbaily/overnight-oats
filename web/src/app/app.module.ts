@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SpotifyComponent } from './components/spotify/spotify.component';
 import { AppleMusicComponent } from './components/apple-music/apple-music.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { homeReducer } from './store/reducers/home.reducer';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ home: homeReducer }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

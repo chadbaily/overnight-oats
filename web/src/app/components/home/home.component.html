@@ -1,1 +1,12 @@
-<p>home works!</p>
+<div class="row" *ngIf="$componentState | async as cs">
+  <div class="card col-md-4" *ngFor="let service of cs.services">
+    <!-- <img src="..." class="card-img-top" alt="..." /> -->
+    <div class="card-body">
+      <h5 class="card-title">{{ service.displayName }}</h5>
+      <p class="card-text">
+        {{ service.serviceText }}
+      </p>
+      <a class="btn btn-primary" (click)="routeService(service)">Go somewhere</a>
+    </div>
+  </div>
+</div>
