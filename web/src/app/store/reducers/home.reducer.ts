@@ -1,7 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as HomeActions from '../actions/home.actions';
-import { MusicService } from '../../../../../shared/app.types';
-import { state } from '@angular/animations';
+import { MusicService } from '../../app.types';
 
 const _services: MusicService[] = [
   {

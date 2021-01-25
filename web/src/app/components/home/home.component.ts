@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { MusicService } from '../../../../../shared/app.types';
+import { MusicService } from '../../app.types';
 import { getMusicServices } from 'src/app/store/actions/home.actions';
 import { AppState, selectHomeState } from 'src/app/store/selectors';
 

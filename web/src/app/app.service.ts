@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { MusicService } from '../../../shared/app.types';
+import { catchError, take } from 'rxjs/operators';
+import { MusicService } from './app.types';
 
 @Injectable({
   providedIn: 'root',
@@ -25,23 +26,23 @@ export class AppService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  getServices(): Observable<MusicService[]> {
+  getServices(): Observable<MusicService[] | any> {
     console.log('in the app service');
-    return of([
-      {
-        displayName: 'Spotify',
-        serviceName: 'spotify',
-        serviceText: 'Here is some info about Spotify!!',
-      },
-      {
-        displayName: 'Apple Music',
-        serviceName: 'appleMusic',
-        serviceText: 'Here is some info about Apple Music!!!',
-      },
-    ]);
-    // return this.http
-    //   .get('localhost:8000/getServices')
-    //   .pipe(take(1), catchError(this.handleError));
+    // return of([
+    //   {
+    //     displayName: 'Spotify',
+    //     serviceName: 'spotify',
+    //     serviceText: 'Here is some info about Spotify!!',
+    //   },
+    //   {
+    //     displayName: 'Apple Music',
+    //     serviceName: 'appleMusic',
+    //     serviceText: 'Here is some info about Apple Music!!!',
+    //   },
+    // ]);
+    return this.http
+      .get('http://localhost:8080/api/musicServices')
+      .pipe(catchError(this.handleError));
   }
   constructor(private http: HttpClient) {}
 }
