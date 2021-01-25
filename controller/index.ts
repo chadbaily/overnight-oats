@@ -10,6 +10,7 @@ const PORT = process.env.SERVER_PORT;
 const app = express();
 
 app.use(express.json());
+// Allow the app to be accessed VIA angular
 app.use(cors({ origin: 'http://localhost:4200' }));
 app.use('/api', userRouter);
 
